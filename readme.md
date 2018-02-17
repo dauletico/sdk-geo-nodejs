@@ -18,4 +18,6 @@ The Node will provide the following functionality:
 ### Getting Started
 
 1. Install requirements using `npm install`
-2. Run using `node hackathon-node`
+1. Generate the private key using `openssl genrsa -out ./keys/privkey.pem 2048`
+1. Generate the public key using `openssl rsa -in ./keys/privkey.pem -pubout -out ./keys/pubkey.pem`
+1. Run using `node hackathon-node`
