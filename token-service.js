@@ -6,7 +6,7 @@ var TokenServiceCharacteristic = require('./token-service-characteristic');
 function TokenService(tokenSigner) {
     console.log('Creating service...')
     bleno.PrimaryService.call(this, {
-        uuid: '13333333333333333333333333333337',
+        uuid: '15555555555000000000000000000001',
         characteristics: [
             new TokenServiceCharacteristic(tokenSigner)
         ]

@@ -5,7 +5,7 @@ var TokenSigner = require('./token-signer');
 function TokenServiceCharacteristic(TokenSigner) {
   console.log('Characteristic initialized.')
   bleno.Characteristic.call(this, {
-    uuid: '13333333333333333333333333330003',
+    uuid: '14444444444000000000000000000001',
     properties: ['notify', 'write'],
     descriptors: [
       new bleno.Descriptor({
