@@ -1,11 +1,22 @@
 var util = require('util');
 var events = require('events');
-var crypto = require('crypto');
 var fs = require('fs');
 
-var private_key = fs.readFileSync('keys/privkey.pem', 'utf-8');
-var public_key = fs.readFileSync('keys/pubkey.pem', 'utf-8');
-var signer = crypto.createSign('sha256');
+var Web3 = require('web3');
+var web3 = new Web3();
+var account;
+
+if (fs.existsSync('keys/privkey')) {
+  var private_key = fs.readFileSync('keys/privkey', 'utf-8');
+  account = web3.eth.accounts.wallet.add(private_key);
+  console.log('Loading existing account.');
+} else {
+  account = web3.eth.accounts.create();
+  fs.writeFileSync('keys/privkey', account.privateKey);
+  console.log('Generating new account...');
+}
+
+console.log(account);
 
 var ResponseCodes = {
   SUCCESS: 0,
@@ -28,13 +39,9 @@ TokenSigner.prototype.signToken = function(token) {
   var timestamp = Math.floor(new Date() / 1000)
   var message = token + '|' + timestamp;
 
-  signer.update(message);
-  signer.end();
-
-  const signature = signer.sign(private_key)
-  const signature_hex = signature.toString('hex')
+  var signature = account.sign(message);
   console.log('Signed message: ' + message);
-  console.log('Generated signature: ' + signature_hex);
+  console.log('Generated signature: ' + signature.signature);
   this.emit('ready', ResponseCodes.ResponseCodes);
 };
 
