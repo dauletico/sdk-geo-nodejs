@@ -28,7 +28,8 @@ TokenServiceCharacteristic.prototype.onWriteRequest = function(data, offset, wit
     callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
   }*/
   else {
-    var token = data.readUInt16BE(0);
+    var token = data.toString('hex');
+    console.log(token)
     this.TokenSigner.once('ready', (result) => {
       if (this.updateValueCallback) {
         var data = new Buffer(1);
