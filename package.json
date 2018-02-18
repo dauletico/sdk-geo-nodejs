@@ -1,6 +1,6 @@
 {
-  "name": "hackathon-node",
-  "description": "Node for hackathon project",
+  "name": "geo-node",
+  "description": "Geo node",
   "version": "1.0",
   "dependencies": {
     "bleno": "^0.5.0",

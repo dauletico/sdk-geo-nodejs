@@ -20,4 +20,4 @@ The Node provides the following functionality:
 ### Getting Started
 
 1. Install requirements using `npm install`
-1. Run using `node hackathon-node`
+1. Run using `node geo-node`
