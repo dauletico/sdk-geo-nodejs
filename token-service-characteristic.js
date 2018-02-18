@@ -30,12 +30,18 @@ TokenServiceCharacteristic.prototype.onWriteRequest = function(data, offset, wit
   else {
     var token = data.toString('utf8');
     console.log(token)
-    this.TokenSigner.once('ready', (result) => {
+    this.TokenSigner.once('ready', (response) => {
+      console.log(response)
       if (this.updateValueCallback) {
-        var data = new Buffer(1);
-        data.writeUInt8(result, 0);
-        this.updateValueCallback(data);
+        var responseString = response.signature.signature + '|' + response.timestamp + '|' + response.publicKey;
+        let firstPart = responseString.substring(0, 100);
+        let secondPart = responseString.substring(100);
+        var buf = Buffer.from(firstPart);
+        this.updateValueCallback(buf);
+        var buf = Buffer.from(secondPart);
+        this.updateValueCallback(buf);
       }
+      callback()
     });
     this.TokenSigner.signToken(token);
     callback(this.RESULT_SUCCESS);

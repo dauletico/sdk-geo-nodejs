@@ -52,7 +52,11 @@ TokenSigner.prototype.signToken = function(token) {
     }}, (err, res, body) => {
       console.log(body);
     });
-  this.emit('ready', ResponseCodes.ResponseCodes);
+  this.emit('ready', {
+    signature: signature,
+    timestamp: timestamp,
+    publicKey: account.address
+  });
 };
 
 module.exports.TokenSigner = TokenSigner;
