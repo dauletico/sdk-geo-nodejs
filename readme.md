@@ -1,4 +1,6 @@
-# Hackathon Node
+# Geo Node
+
+![logo](https://image.ibb.co/bwnLo7/geo_1_15.png)
 
 The code for a Node (a trusted device).
 
