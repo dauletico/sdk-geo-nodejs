@@ -30,9 +30,13 @@ function TokenSigner() {
 
 util.inherits(TokenSigner, events.EventEmitter);
 
-TokenSigner.prototype.signToken = function(token) {
+TokenSigner.prototype.signToken = function(input) {
+  var inputArr = input.split('|');
+  var anonymizeVerifications = inputArr[0];
+  var token = inputArr[1];
   // insert logic to sign token
   console.log('Token received: ' + token)
+
 
   // Message Format
   // For now: 'token' + '|' + 'timestamp'
@@ -43,15 +47,17 @@ TokenSigner.prototype.signToken = function(token) {
   var signature = account.sign(message);
   console.log('Signed message: ' + message);
   console.log('Generated signature: ' + signature.signature);
-  request.post('https://geoproof.herokuapp.com/api/checkin', { form :
-    {
-      userToken: token,
-      timestamp: timestamp,
-      signature: signature,
-      node: account.address
-    }}, (err, res, body) => {
-      console.log(body);
-    });
+  if (anonymizeVerifications == 0) {
+    request.post('https://geoproof.herokuapp.com/api/checkin', { form :
+      {
+        userToken: token,
+        timestamp: timestamp,
+        signature: signature,
+        node: account.address
+      }}, (err, res, body) => {
+        console.log(body);
+      });
+  }
   this.emit('ready', {
     signature: signature,
     timestamp: timestamp,
