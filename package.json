@@ -1,7 +1,7 @@
 {
   "name": "geo-node",
   "description": "Geo node",
-  "version": "1.0",
+  "version": "0.0.1",
   "dependencies": {
     "bleno": "^0.5.0",
     "elliptic": "^6.4.0",
