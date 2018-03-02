@@ -12,8 +12,8 @@ The Node provides the following functionality:
 - Communicate messages to backend
 
 ### Prerequisites
-npm
-node
+- npm
+- node
 
 ### Integrations
 
