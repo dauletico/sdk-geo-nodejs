@@ -9,7 +9,11 @@ The Node provides the following functionality:
 - Generate a private / public keypair, unique to each node
 - Initialize itself with the backend, signing with the private key
 - Act as a Bluetooth peripheral to receive verification requests from users. Sign messages using private key verifying presence of user at a certain timestamp.
-- Communicate messages to backend 
+- Communicate messages to backend
+
+### Prerequisites
+npm
+node
 
 ### Integrations
 
