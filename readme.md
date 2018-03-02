@@ -11,23 +11,23 @@ The Node provides the following functionality:
 - Act as a Bluetooth peripheral to receive verification requests from users. Sign messages using private key verifying presence of user at a certain timestamp.
 - Communicate messages to backend
 
-### Prerequisites
+## Prerequisites
 - npm
 - node
 
-### Integrations
+## Integrations
 
 [Bleno](https://github.com/noble/bleno) - Act as Bluetooth peripheral
 
 [Web3](https://github.com/ethereum/web3.js/) - Generate keypair
 
-### Getting Started
+## Getting Started
 
 1. Install requirements using `npm install`
 1. Create the .env file: `cp .env.example .env`
 1. Run using `node geo-node`
 
-### Usage
+## Usage
 
 Connect to the Geo Node by running the [Geo User Client](https://github.com/XYOracleNetwork/geo-user-client) on an iOS or Android device. Then, when in proximity of the device running Geo Node, the device will be discovered and you may connect to generate a signature.
 
