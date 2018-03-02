@@ -2,6 +2,7 @@ var util = require('util');
 var events = require('events');
 var fs = require('fs');
 var request = require('request');
+require('dotenv').config();
 
 var Web3 = require('web3');
 var web3 = new Web3();
@@ -48,7 +49,7 @@ TokenSigner.prototype.signToken = function(input) {
   console.log('Signed message: ' + message);
   console.log('Generated signature: ' + signature.signature);
   if (anonymizeVerifications == 0) {
-    request.post('https://geoproof.herokuapp.com/api/checkin', { form :
+    request.post(process.env.SERVER_URL + '/api/checkin', { form :
       {
         userToken: token,
         timestamp: timestamp,
